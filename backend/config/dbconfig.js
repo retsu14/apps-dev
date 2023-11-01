@@ -1,14 +1,14 @@
-const mysql = require("mysql2");
+const mysql = require("mysql");
 
 const connectDb = async () => {
   try {
-    mysql.createPool({
+    const connection = await mysql.createConnection({
       host: "localhost",
       user: "root",
       password: "",
       database: "apps-dev",
     });
-    console.log("Connected");
+    return connection;
   } catch (error) {
     console.log(error);
     process.exit(1);
